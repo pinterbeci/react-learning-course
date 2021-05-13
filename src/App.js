@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header'
+import Header2 from './components/Header2'
 
-function App() {
+import React from 'react'
+
+//create a component with function
+{/*function App() {
+  const name = "Beci";
+  const x = true;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>
+        Hello From React!
+      </h1>
+      <h2>Hello, {name}!</h2>
+      <h2> X is it true? {x?"Yes":"Nope"} </h2>
+     
+     // import the Header component, bellow
+     
+     <Header>
+
+     </Header>
+    
     </div>
   );
-}
+    */}
+{/*
+    class App extends React.Component{
+      render(){
+        return <h1>Hello, this a Component, 
+          what created with class!</h1>
+      }
+    }
+  */}
 
+//creating component, with arrow function
+const App = () => {
+
+  return (
+    <div className="container">
+      {/*
+      <h2>In bellow, the 'Header' component rendered!</h2>
+      <Header title = {'asdasdasd'} ></Header>
+      */}
+      <Header2></Header2>
+    </div>
+  )
+}
 export default App;
