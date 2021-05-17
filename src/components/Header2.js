@@ -17,12 +17,12 @@ const Header2 = ({ title }) => {
                 {title}
             </h1>
             <Button color="green" text="Hello" onClick={onClick}></Button>
-            <Button color="yellow" text="Szia" onClick={onClick}></Button>
             <Button color="gray" text="Cső" onClick={onClick}></Button>
             <Button ></Button>
 
+            {/**
             <Tasks></Tasks>
-
+            */}
         </header>
     )
 }
