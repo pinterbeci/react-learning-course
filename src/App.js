@@ -82,7 +82,7 @@ const App = () => {
       <h2>In bellow, the 'Header' component rendered!</h2>
       <Header title = {'asdasdasd'} ></Header>
       */}
-      <Header2 />
+      <Header2/>
 
       {tasks.length > 0 ? (
         <Tasks tasks2={tasks} onDelete={deleteTask} />) 
