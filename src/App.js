@@ -3,6 +3,8 @@ import { useState } from "react";
 import Header2 from "./components/Header2";
 import React from "react";
 import Tasks from "./components/Tasks";
+import AddTask from './components/AddTask'
+
 
 //create a component with function
 {
@@ -76,17 +78,32 @@ const App = () => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
+  //toggle reminder
+
+  const toggleReminder = (id) => {
+
+    setTasks( tasks.map((task) =>
+      task.id == id? {...task, reminder:
+      !task.reminder} : task
+    ))
+  }
   return (
     <div className="container">
       {/*
       <h2>In bellow, the 'Header' component rendered!</h2>
       <Header title = {'asdasdasd'} ></Header>
       */}
-      <Header2/>
+
+
+      <Header2 />
+      <AddTask></AddTask>
 
       {tasks.length > 0 ? (
-        <Tasks tasks2={tasks} onDelete={deleteTask} />) 
-        : ('No task to show')}
+        <Tasks tasks2={tasks} 
+        onDelete={deleteTask} 
+        onToggle = {toggleReminder} />)
+        : ('No task to show')
+        }
     </div>
   );
 };

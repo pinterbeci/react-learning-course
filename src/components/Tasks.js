@@ -86,7 +86,9 @@ const Tasks = (props) => {
             { props.tasks2.map((task) =>(
                 <Task key = {task.id} 
                 task = {task}
-                onDelete = {props.onDelete}></Task>
+                onDelete = {props.onDelete}
+                onToggle = {props.onToggle}
+                ></Task>
             ))}
 
 
