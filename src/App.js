@@ -42,6 +42,9 @@ import AddTask from './components/AddTask'
 
 //creating component, with arrow function
 const App = () => {
+
+  const [showTask, setShowTask] = useState(false)
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -103,10 +106,12 @@ const App = () => {
       <h2>In bellow, the 'Header' component rendered!</h2>
       <Header title = {'asdasdasd'} ></Header>
       */}
+      <Header2 onAdd={() =>
+        setShowTask(!showTask)}
+        showTask={showTask}
+      />
 
-
-      <Header2 />
-      <AddTask onAdd={addTask}></AddTask>
+      { showTask && <AddTask onAdd={addTask}></AddTask>}
 
       {tasks.length > 0 ? (
         <Tasks tasks2={tasks}
