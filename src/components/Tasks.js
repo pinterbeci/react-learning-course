@@ -83,8 +83,8 @@ const Tasks = (props) => {
              * akkor így tudjuk azt megjeleníteni
              * 
              */}
-            { props.tasks2.map((task) =>(
-                <Task key = {task.id} 
+            { props.tasks2.map((task, index) =>(
+                <Task key = {index} 
                 task = {task}
                 onDelete = {props.onDelete}
                 onToggle = {props.onToggle}
