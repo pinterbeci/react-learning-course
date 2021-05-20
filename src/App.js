@@ -1,9 +1,11 @@
-import Header from "./components/Header"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import Header2 from "./components/Header2"
 import React from "react"
 import Tasks from "./components/Tasks"
 import AddTask from "./components/AddTask"
+import Footer from "./components/Footer"
+import About from "./components/About"
 
 //create a component with function
 {
@@ -107,12 +109,13 @@ const App = () => {
 
   //Delete Task from server
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, { method: "DELETE" })
+    await fetch(`http://localhost:5000/tasks/${id}`,
+      { method: "DELETE" })
 
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  //Add to server
+  //Add data to server
   const addTask = async (task) => {
     const res = await fetch("http://localhost:5000/tasks", {
       method: "POST",
@@ -131,7 +134,10 @@ const App = () => {
 
   const toggleReminder = async (id) => {
     const taskToToggle = await fetchTask(id)
-    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
+    const updTask = {
+      ...taskToToggle,
+      reminder: !taskToToggle.reminder
+    }
 
     const res = await fetch(`http://localhost:5000/tasks/${id}`, {
       method: "PUT",
@@ -175,21 +181,37 @@ const App = () => {
 
   */
   return (
-    <div className="container">
-      {/*
+    <Router>
+      <div className="container">
+        {/*
       <h2>In bellow, the 'Header' component rendered!</h2>
       <Header title = {'asdasdasd'} ></Header>
       */}
-      <Header2 onAdd={() => setShowTask(!showTask)} showTask={showTask} />
+        <Header2 onAdd={() => setShowTask(!showTask)} showTask={showTask} />
+        {/*
+        {showTask && <AddTask onAdd={addTask}></AddTask>}
 
-      {showTask && <AddTask onAdd={addTask}></AddTask>}
+        {tasks.length > 0 ? (
+          <Tasks tasks2={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+        ) : (
+          "No task to show"
+        )}*/}
+        <Route path='/' exact render={(props) => (
+          <>
+            {showTask && <AddTask onAdd={addTask}></AddTask>}
 
-      {tasks.length > 0 ? (
-        <Tasks tasks2={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
-      ) : (
-        "No task to show"
-      )}
-    </div>
+            {tasks.length > 0 ? (
+              <Tasks tasks2={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+            ) : (
+              "No task to show"
+            )}
+          </>
+        )
+        } />
+        <Route path='/about' component={About} />
+        <Footer />
+      </div>
+    </Router>
   )
 }
 export default App
